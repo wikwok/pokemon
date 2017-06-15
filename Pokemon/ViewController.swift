@@ -26,6 +26,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             print ("Ready to Go Pokemon")
             mapView.showsUserLocation = true
             manager.startUpdatingLocation()
+            
+            Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { (timer) in
+                //spwan a pokemon
+                print("Timer \(timer)")
+                if let coord = self.manager.location?.coordinate {
+                    let anno = MKPointAnnotation()
+                    anno.coordinate = coord
+                    
+                    let randoLat = (Double(arc4random_uniform(200)) - 100.0) / 50000.0
+                    let randoLon = (Double(arc4random_uniform(200)) - 100.0) / 50000.0
+                    
+                    anno.coordinate.latitude += randoLat
+                    anno.coordinate.longitude += randoLon
+                    
+                    self.mapView.addAnnotation(anno)
+                }
+            })
+            
         } else {
             manager.requestWhenInUseAuthorization()   //.requestAlwaysAuthorization() even when app is closed, can cause mistrust with users, dains battery. Check privacy settings to match.
         }
@@ -35,7 +53,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print ("We made it: \(updateCount)")
         if updateCount < 20 {
-            let region = MKCoordinateRegionMakeWithDistance((manager.location?.coordinate)!, 400, 400)
+            let region = MKCoordinateRegionMakeWithDistance((manager.location?.coordinate)!, 200, 200)
             mapView.setRegion(region, animated: false) //animated: true, causes map fuzzy start, if you want!
             updateCount += 1
         } else {
@@ -46,7 +64,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func centerTapped(_ sender: Any) {
         if let coord = manager.location?.coordinate { //to stop app crashing when updating location
-            let region = MKCoordinateRegionMakeWithDistance(coord, 400, 400)
+            let region = MKCoordinateRegionMakeWithDistance(coord, 200, 200)
             mapView.setRegion(region, animated: true)
         }
 
