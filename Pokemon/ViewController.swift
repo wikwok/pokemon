@@ -17,6 +17,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var updateCount = 0
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
