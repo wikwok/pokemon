@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FEAB3591EF4BA6200624853 /* PokeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAB3581EF4BA6200624853 /* PokeAnnotation.swift */; };
 		9FF835AF1EF30B250074564E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF835AE1EF30B250074564E /* AppDelegate.swift */; };
 		9FF835B11EF30B250074564E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF835B01EF30B250074564E /* ViewController.swift */; };
 		9FF835B41EF30B250074564E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FF835B21EF30B250074564E /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9FEAB3581EF4BA6200624853 /* PokeAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeAnnotation.swift; sourceTree = "<group>"; };
 		9FF835AB1EF30B250074564E /* Pokemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF835AE1EF30B250074564E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FF835B01EF30B250074564E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				9FF835B01EF30B250074564E /* ViewController.swift */,
 				9FF835C61EF343630074564E /* PokedexViewController.swift */,
 				9FF835C81EF345480074564E /* CoreDataHelp.swift */,
+				9FEAB3581EF4BA6200624853 /* PokeAnnotation.swift */,
 				9FF835B21EF30B250074564E /* Main.storyboard */,
 				9FF835B81EF30B250074564E /* Assets.xcassets */,
 				9FF835BA1EF30B250074564E /* LaunchScreen.storyboard */,
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FF835B11EF30B250074564E /* ViewController.swift in Sources */,
+				9FEAB3591EF4BA6200624853 /* PokeAnnotation.swift in Sources */,
 				9FF835C71EF343630074564E /* PokedexViewController.swift in Sources */,
 				9FF835AF1EF30B250074564E /* AppDelegate.swift in Sources */,
 				9FF835C91EF345480074564E /* CoreDataHelp.swift in Sources */,
@@ -325,6 +329,7 @@
 				9FF835C21EF30B250074564E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -27,7 +27,6 @@ class PokedexViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return caughtPokemons.count
@@ -38,7 +37,16 @@ class PokedexViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "HELLO THERE"
+        let pokemon : Pokemon
+        
+        if indexPath.section == 0 {
+            pokemon = caughtPokemons[indexPath.row]
+        } else {
+            pokemon = uncaughtPokemons[indexPath.row]
+        }
+        
+        cell.textLabel?.text = pokemon.name
+        cell.imageView?.image = UIImage(named: pokemon.imageName!)
         return cell
     }
     
