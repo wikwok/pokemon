@@ -105,6 +105,41 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        mapView.deselectAnnotation(view.annotation!, animated: true) //so that you can keep tapping same pokemon on consective basis
+        
+        if view.annotation is MKUserLocation {
+            return
+        }
+        
+        let region = MKCoordinateRegionMakeWithDistance(view.annotation!.coordinate, 200, 200) //refocuses map on tapped pokemon
+        mapView.setRegion(region, animated: true)
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {(timer) in //giving time for zoom to happend so that, you don't get false negatives on very high zoom resolutions.
+            let pokemon = (view.annotation as! PokeAnnotation).pokemon //to pull pokemon tapped on.
+            
+            if let coord = self.manager.location?.coordinate {
+                if MKMapRectContainsPoint(mapView.visibleMapRect, MKMapPointForCoordinate(coord)) {
+                    print("can catch pokemon")
+                    
+                    pokemon.caught = true
+                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                    
+                    mapView.removeAnnotation(view.annotation!) //remove pokemon from screen after being caught.
+                } else { //dispaly alert to user
+                    print("cant catch pokemon, it is far away")
+                    let alertVC = UIAlertController(title: "Uh-OH", message: "You are too far away to catch the \(pokemon.name!). Move closer to it!", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default, handler: {(action) in
+                        
+                    })
+                    alertVC.addAction(OKAction)
+                    self.present(alertVC, animated: true, completion: nil)
+                }
+            }
+        })
+        
+        print("Annotation tapped")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
